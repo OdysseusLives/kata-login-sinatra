@@ -1,1 +1,12 @@
 h1 Loving Slim
+
+form action="/user" method="POST"
+  input type="text" name="username"
+  input type="text" name="password"
+    input.button type="submit" value="New User >>"
+
+h2 Users
+
+ul.users
+  - @users.each do |user|
+    li.user = user.username
