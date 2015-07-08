@@ -1,7 +1,8 @@
 require 'sinatra'
+require 'slim'
 
 class HelloWorldApp < Sinatra::Base
     get '/' do
-      "Hello, world!"
+      slim :index
     end
 end
