@@ -16,7 +16,11 @@ class HelloWorldApp < Sinatra::Base
   post '/users/create' do
     @user = User.new params
 
-    flash[:notice] = @user.save ? 'Congratulations!' : 'Sorry, there was an error!'
+    if @user.save 
+      flash[:success] = "Congratulations, #{@user.username}!"
+    else
+      flash[:error] = 'Sorry, there was an error creating that user!'
+    end
 
     redirect to('/')
   end
