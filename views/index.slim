@@ -1,11 +1,17 @@
 h1 Loving Slim
 
-form action="/user" method="POST"
+form action="/users/create" method="POST"
   input type="text" name="username"
   input type="text" name="password"
     input.button type="submit" value="New User >>"
 
 h2 Users
+
+#flash
+  - [:error, :success, :notice].each do |name|
+    - if flash.has?(name)
+      .message class=name
+        p = flash[name]
 
 ul.users
   - @users.each do |user|

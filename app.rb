@@ -1,26 +1,25 @@
 require 'sinatra'
 require 'slim'
 require 'data_mapper'
+require 'rack-flash'
+require './models/user'
 
 class HelloWorldApp < Sinatra::Base
-    get '/' do
-      @users = User.all
-      slim :index
-    end
+  enable :sessions
+  use Rack::Flash, :accessorize => [:info, :error, :success, :notice], :sweep => true
 
-    post '/user' do
-      User.create params
-      redirect to('/')
-    end
-end
+  get '/' do
+    @users = User.all
+    slim :index
+  end
 
-class User
-  include DataMapper::Resource
-  
-  property :id,           Serial
-  property :username,     String, :required => true
-  property :password,     String, :required => true
-  property :completed_at, DateTime
+  post '/users/create' do
+    @user = User.new params
+
+    flash[:notice] = @user.save ? 'Congratulations!' : 'Sorry, there was an error!'
+
+    redirect to('/')
+  end
 end
 
 configure :development do
