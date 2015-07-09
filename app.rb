@@ -14,18 +14,17 @@ class HelloWorldApp < Sinatra::Base
     end
 end
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
-
 class User
-    include DataMapper::Resource
-    property :id,           Serial
-    property :username,     String, :required => true
-    property :password,     String, :required => true
-    property :completed_at, DateTime
+  include DataMapper::Resource
+  
+  property :id,           Serial
+  property :username,     String, :required => true
+  property :password,     String, :required => true
+  property :completed_at, DateTime
 end
-DataMapper.finalize
 
 configure :development do
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
   DataMapper.finalize
   DataMapper.auto_upgrade!
 end
