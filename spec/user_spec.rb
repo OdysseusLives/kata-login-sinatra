@@ -65,6 +65,14 @@ describe User do
           expect(user.errors[:password].length).to equal(1)
           expect(user.errors[:password][0]).to be == 'Password has an invalid format'
         end
+
+        it 'should require passwords to contain an uppercase letter' do
+          password = @valid_password.gsub('A', '')
+          user = FactoryGirl.build(:user, :password => password)
+          expect(user).not_to be_valid
+          expect(user.errors[:password].length).to equal(1)
+          expect(user.errors[:password][0]).to be == 'Password has an invalid format'
+        end
       end
     end
 	end
