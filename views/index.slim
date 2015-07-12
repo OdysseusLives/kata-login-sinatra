@@ -11,13 +11,13 @@ form action="/users/create" method="POST"
 
 p = '* Passwords should be 8 or more characters, have a lowercase and uppercase letter, and have a number.'
 
-h3 Current Users
-
 #flash
   - [:error, :success, :notice].each do |name|
     - if flash.has?(name)
       .message class=name
         p = flash[name]
+
+h3 Current Users
 
 ul.users
   - @users.each do |user|
