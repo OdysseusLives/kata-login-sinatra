@@ -1,11 +1,13 @@
-h1 Loving Slim
+h1 Users
+
+h3 Make a new user
 
 form action="/users/create" method="POST"
   input type="text" name="username"
   input type="text" name="password"
     input.button type="submit" value="New User >>"
 
-h2 Users
+h3 Current Users
 
 #flash
   - [:error, :success, :notice].each do |name|
