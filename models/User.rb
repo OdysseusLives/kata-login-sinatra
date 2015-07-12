@@ -3,7 +3,7 @@ class User
   
   property :id,           Serial
   property :username,     String, :required => true, :unique => true, :format => /^\w+$/
-  property :password,     String, :required => true, :format => /(?=[a-z]+)/, :format => /(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*\d+).*/
+  property :password,     String, :required => true, :format => /(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*\d+).*/
   property :completed_at, DateTime
 
   validates_length_of :username, :min => 5
