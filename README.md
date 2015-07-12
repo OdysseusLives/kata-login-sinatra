@@ -5,4 +5,4 @@ Resolve dependencies:
 ```bundle install```
 
 To start server: 
-```rackup```
+```rackup ```
