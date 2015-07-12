@@ -3,9 +3,13 @@ h1 Users
 h3 Make a new user
 
 form action="/users/create" method="POST"
+  ' Username:
   input type="text" name="username"
+  ' Password:
   input type="text" name="password"
     input.button type="submit" value="New User >>"
+
+p = '* Passwords should be 8 or more characters, have a lowercase and uppercase letter, and have a number.'
 
 h3 Current Users
 
