@@ -1,6 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (4.2.3)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
     addressable (2.3.8)
     bcrypt (3.1.10)
     bcrypt-ruby (3.1.5)
@@ -17,6 +23,7 @@ GEM
       dm-validations (~> 1.2.0)
     data_objects (0.10.16)
       addressable (~> 2.1)
+    diff-lcs (1.2.5)
     dm-aggregates (1.2.0)
       dm-core (~> 1.2.0)
     dm-constraints (1.2.0)
@@ -53,15 +60,32 @@ GEM
       dm-core (~> 1.2.0)
     do_sqlite3 (0.10.16)
       data_objects (= 0.10.16)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
     fastercsv (1.5.5)
+    i18n (0.7.0)
     json (1.8.3)
     json_pure (1.8.2)
+    minitest (5.7.0)
     multi_json (1.11.2)
     rack (1.6.4)
     rack-flash3 (1.0.5)
       rack
     rack-protection (1.5.3)
       rack
+    rspec (3.3.0)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
+    rspec-core (3.3.1)
+      rspec-support (~> 3.3.0)
+    rspec-expectations (3.3.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-mocks (3.3.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-support (3.3.0)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -72,7 +96,10 @@ GEM
     sqlite3 (1.3.10)
     stringex (1.5.1)
     temple (0.7.6)
+    thread_safe (0.3.5)
     tilt (2.0.1)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
     uuidtools (2.1.5)
 
 PLATFORMS
@@ -81,7 +108,9 @@ PLATFORMS
 DEPENDENCIES
   data_mapper
   dm-sqlite-adapter
+  factory_girl (~> 4.0)
   rack-flash3
+  rspec
   sinatra
   slim
   sqlite3

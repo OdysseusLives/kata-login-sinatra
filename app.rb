@@ -19,7 +19,7 @@ class HelloWorldApp < Sinatra::Base
     if @user.save 
       flash[:success] = "Congratulations, #{@user.username}!"
     else
-      flash[:error] = 'Sorry, there was an error creating that user!'
+      flash[:error] = @user.errors.full_messages
     end
 
     redirect to('/')
