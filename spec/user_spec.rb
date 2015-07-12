@@ -19,6 +19,16 @@ describe User do
         duplicated_username_user = FactoryGirl.build(:user, :username => user.username)
 				expect(duplicated_username_user).not_to be_valid
       end
+
+      context 'special characters' do
+        it 'should allow letters, numbers, and uppercase letters' do
+          expect(FactoryGirl.build(:user, :username => 'aaAA11')).to be_valid
+          end
+
+        it 'should disallow special characters' do
+          expect(FactoryGirl.build(:user, :username => 'aaAA11!@#')).not_to be_valid
+        end
+      end
 		end
 	end
 end	

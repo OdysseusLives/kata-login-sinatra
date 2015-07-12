@@ -2,7 +2,7 @@ class User
   include DataMapper::Resource
   
   property :id,           Serial
-  property :username,     String, :required => true, :unique => true
+  property :username,     String, :required => true, :unique => true, :format => /^\w+$/
   property :password,     String, :required => true
   property :completed_at, DateTime
 
