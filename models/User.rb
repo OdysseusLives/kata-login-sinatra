@@ -7,4 +7,5 @@ class User
   property :completed_at, DateTime
 
   validates_length_of :username, :min => 5
+  validates_length_of :password, :min => 8
 end

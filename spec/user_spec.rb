@@ -13,6 +13,10 @@ describe User do
 				expect(FactoryGirl.build(:user, :username => 'abcd')).not_to be_valid
 		  end
 
+      it 'should allow usernames 5 characters or more long' do
+				expect(FactoryGirl.build(:user, :username => 'abcde')).to be_valid
+		  end
+
       it 'should disallow repeated usernames' do
         user = FactoryGirl.build(:user)
         user.save!
@@ -29,6 +33,20 @@ describe User do
           expect(FactoryGirl.build(:user, :username => 'aaAA11!@#')).not_to be_valid
         end
       end
-		end
+    end
+
+    context 'password' do
+      it 'should require a password' do
+        expect(FactoryGirl.build(:user, :password => '')).not_to be_valid
+      end
+
+      it 'should disallow passwords under 8 characters' do
+        expect(FactoryGirl.build(:user, :password => '1234567')).not_to be_valid
+      end
+
+      it 'should allow passwords 8 characters or more long' do
+        expect(FactoryGirl.build(:user, :password => '12345678')).to be_valid
+      end
+    end
 	end
 end	
